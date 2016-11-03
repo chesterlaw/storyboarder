@@ -1,0 +1,4 @@
+.title-bar
+  .title-bar__title Storyboarder
+
+= outlet
