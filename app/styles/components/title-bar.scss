@@ -1,0 +1,34 @@
+.title-bar {
+  padding: 0.1rem 0.5rem;
+  border-bottom: 1px solid black;
+  overflow: hidden;
+}
+
+.title-bar__title {
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+.title-bar__tools {
+  width: 140px;
+  float: right;
+}
+
+.title-bar__ink {
+  width: 20px;
+  height: 20px;
+  background: black;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.title-bar__ink--white {
+  background: white;
+}
+
+.title-bar__play {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  margin-left: 2rem;
+}

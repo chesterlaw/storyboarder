@@ -1,4 +1,9 @@
 .title-bar
   .title-bar__title Storyboarder
 
+  .title-bar__tools
+    .title-bar__ink.title-bar__ink--black
+    .title-bar__ink.title-bar__ink--white
+    .title-bar__play Play
+
 = outlet
