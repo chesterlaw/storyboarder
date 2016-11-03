@@ -6,4 +6,3 @@
     .title-bar__ink.title-bar__ink--white
     .title-bar__play Play
 
-= outlet
