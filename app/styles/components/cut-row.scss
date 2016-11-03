@@ -1,0 +1,22 @@
+.cut-row {
+  border-bottom: 1px solid black;
+}
+
+.cut-row__section {
+  display: inline-block;
+  text-align: center;
+  border-right: 1px solid black;
+  &:last-of-type {border-right: 0;}
+}
+
+.cut-row__section--cut {
+  width: $cut-column-width;
+}
+
+.cut-row__section--visual {
+  width: $visual-column-width;
+}
+
+.cut-row__section--duration {
+  width: $duration-column-width;
+}

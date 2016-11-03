@@ -1,0 +1,28 @@
+$cut-column-width: 10%;
+$visual-column-width: 60%;
+$duration-column-width: 30%;
+
+.column-labels {
+  border-bottom: 1px solid black;
+}
+
+.column-labels__label {
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.2rem;
+  border-right: 1px solid black;
+  &:last-of-type {border-right: 0;}
+}
+
+.column-labels__label--cut {
+  width: $cut-column-width;
+}
+
+.column-labels__label--visual {
+  width: $visual-column-width;
+}
+
+.column-labels__label--duration {
+  width: $duration-column-width;
+}

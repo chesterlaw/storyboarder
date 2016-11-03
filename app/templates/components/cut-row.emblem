@@ -1,0 +1,6 @@
+.cut-row__section.cut-row__section--cut
+  p 1
+.cut-row__section.cut-row__section--visual
+  canvas
+.cut-row__section.cut-row__section--duration
+  input

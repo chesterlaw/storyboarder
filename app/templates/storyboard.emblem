@@ -6,3 +6,9 @@
     .title-bar__ink.title-bar__ink--white
     .title-bar__play Play
 
+.column-labels
+  .column-labels__label.column-labels__label--cut Cut
+  .column-labels__label.column-labels__label--visual Visual
+  .column-labels__label.column-labels__label--duration Duration (s)
+
+= cut-row
