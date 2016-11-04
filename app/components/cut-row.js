@@ -65,11 +65,13 @@ export default Ember.Component.extend({
     }
 
     function findxy(res, e) {
+      var BB = canvas.getBoundingClientRect();
+
       if (res == 'down') {
         prevX = currX;
         prevY = currY;
-        currX = e.clientX - canvas.offsetLeft;
-        currY = e.clientY - canvas.offsetTop;
+        currX = e.clientX - BB.left;
+        currY = e.clientY - BB.top;
 
         flag = true;
         dot_flag = true;
@@ -88,8 +90,8 @@ export default Ember.Component.extend({
         if (flag) {
           prevX = currX;
           prevY = currY;
-          currX = e.clientX - canvas.offsetLeft;
-          currY = e.clientY - canvas.offsetTop;
+          currX = e.clientX - BB.left;
+          currY = e.clientY - BB.top;
           draw();
         }
       }
