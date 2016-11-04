@@ -9,7 +9,6 @@ export default Ember.Component.extend({
   aspectRatio: 1.33333333,
   flag: false,
   dot_flag: false,
-  drawColor: 'black',
 
   didInsertElement() {
     this.set('canvas', this.element.querySelector('canvas'));
@@ -30,9 +29,9 @@ export default Ember.Component.extend({
     this.get('canvas').addEventListener('mouseup', function (e) {
       this.findxy('up', e)
     }.bind(this), false);
-    this.get('canvas').addEventListener('mouseout', function (e) {
-      this.findxy('out', e)
-    }.bind(this), false);
+    // this.get('canvas').addEventListener('mouseout', function (e) {
+    //   this.findxy('out', e)
+    // }.bind(this), false);
 
     this.set('canvasContext', this.get('canvas').getContext('2d'));
     this.get('canvasContext').lineWidth = 2;
@@ -52,7 +51,6 @@ export default Ember.Component.extend({
   recalculateCanvasSize() {
     var offsetHeight = this.get('canvas').offsetHeight;
     var offsetWidth = offsetHeight*this.get('aspectRatio');
-    console.log(1)
 
     screen.height;
     screen.width;
@@ -61,14 +59,6 @@ export default Ember.Component.extend({
 
     this.set('w', this.get('canvas').width);
     this.set('h', this.get('canvas').height);
-  },
-
-  enterEraseMode() {
-    this.set('drawColor', 'white');
-  },
-
-  enterDrawMode(obj) {
-    this.set('drawColor', 'black');
   },
 
   findxy(res, e) {

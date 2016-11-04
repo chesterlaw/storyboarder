@@ -2,8 +2,8 @@
   .title-bar__title Storyboarder
 
   .title-bar__tools
-    .title-bar__ink.title-bar__ink--black
-    .title-bar__ink.title-bar__ink--white
+    .title-bar__ink.title-bar__ink--black click='enterDrawMode'
+    .title-bar__ink.title-bar__ink--white click='enterEraseMode'
     .title-bar__play Play
 
 .column-labels
@@ -11,7 +11,7 @@
   .column-labels__label.column-labels__label--visual Visual
   .column-labels__label.column-labels__label--duration Duration (s)
 
-each model as |cut index|
-  = cut-row cut=cut index=index
+each model.cuts as |cut index|
+  = cut-row cut=cut index=index drawColor=model.drawColor
 
 = add-cut-button
