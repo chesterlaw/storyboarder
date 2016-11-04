@@ -9,9 +9,14 @@ export default Ember.Component.extend({
   aspectRatio: 1.33333333,
   flag: false,
   dot_flag: false,
+  canvasHeight: 800,
 
   didInsertElement() {
     this.set('canvas', this.element.querySelector('canvas'));
+
+    this.get('canvas').height = this.get('canvasHeight');
+    this.get('canvas').width = this.get('canvasHeight')*this.get('aspectRatio');
+
     var offsetHeight = this.get('canvas').offsetHeight;
     var offsetWidth = offsetHeight*this.get('aspectRatio');
     this.get('canvas').height = offsetHeight;
