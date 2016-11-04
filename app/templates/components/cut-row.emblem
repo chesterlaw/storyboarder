@@ -5,4 +5,3 @@
 .cut-row__section.cut-row__section--duration
   button click='clearCanvas' Clear
   input.cutDuration value=cut.duration keyUp="updateCutDuration"
-

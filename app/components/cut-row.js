@@ -22,6 +22,7 @@ export default Ember.Component.extend({
   },
 
   didInsertElement() {
+    var aspectRatio = 1.33333333;
     var flag = false;
     var prevX = 0;
     var currX = 0;
@@ -30,8 +31,15 @@ export default Ember.Component.extend({
     var dot_flag = false;
     var drawColor = 'black';
     var canvas = this.element.querySelector('canvas');
+
+    var offsetHeight = canvas.offsetHeight;
+    var offsetWidth = offsetHeight*aspectRatio;
+    canvas.height = offsetHeight;
+    canvas.width = offsetWidth;
+
     var canvasContext = canvas.getContext('2d')
     this.set('canvasContext', canvasContext);
+
     this.set('w', canvas.width);
     this.set('h', canvas.height);
 
