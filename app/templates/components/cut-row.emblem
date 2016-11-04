@@ -4,4 +4,5 @@
   canvas.cut-row__canvas width=240 height=180
 .cut-row__section.cut-row__section--duration
   button click='clearCanvas' Clear
+  button click='saveImageToRecord' Save
   input.cutDuration value=cut.duration keyUp="updateCutDuration"

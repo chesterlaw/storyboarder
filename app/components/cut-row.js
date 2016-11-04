@@ -113,6 +113,10 @@ export default Ember.Component.extend({
       if (confirm('Really want to clear?')) {
         this.get('canvasContext').clearRect(0, 0, this.get('w'), this.get('h'));
       }
+    },
+
+    saveImageToRecord() {
+      this.set('cut.visual', this.get('canvas').toDataURL());
     }
   }
 });
