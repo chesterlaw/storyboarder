@@ -5,7 +5,6 @@
 .cut-row__section {
   display: inline-block;
   text-align: center;
-  border-right: 1px solid black;
   &:last-of-type {border-right: 0;}
 }
 
@@ -15,6 +14,8 @@
 
 .cut-row__section--visual {
   width: $visual-column-width;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .cut-row__section--duration {
@@ -22,7 +23,7 @@
 }
 
 .cut-row__canvas {
-  border: 1px solid black;
+  background: #eee;
   cursor: crosshair;
   width: 100%;
   // cursor: url('path-to-image.png'), auto;
