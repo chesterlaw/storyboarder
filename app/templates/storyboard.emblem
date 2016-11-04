@@ -13,4 +13,4 @@
 
 = cut-row
 
-button.add-cut-button Add Cut +
+= add-cut-button
