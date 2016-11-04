@@ -49,6 +49,7 @@ export default Ember.Component.extend({
   },
 
   recalculateCanvasSize() {
+    // TODO: recalculate canvas size on screen resize.
     var offsetHeight = this.get('canvas').offsetHeight;
     var offsetWidth = offsetHeight*this.get('aspectRatio');
 
