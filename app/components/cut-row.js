@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: 'cut-row',
 
+  cutNumber: Ember.computed('index', function() {
+    return this.get('index') + 1;
+  }),
   didInsertElement() {
     var flag = false,
         prevX = 0,
