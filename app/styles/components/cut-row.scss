@@ -10,6 +10,7 @@
 
 .cut-row__section--cut {
   width: $cut-column-width;
+  font-size: 2rem;
 }
 
 .cut-row__section--visual {
@@ -20,10 +21,10 @@
 
 .cut-row__section--duration {
   width: $duration-column-width;
+  font-size: 2rem;
 }
 
 .cut-row__canvas {
-  background: darken(white, 5%);
   cursor: crosshair;
   width: 100%;
   // cursor: url('path-to-image.png'), auto;
