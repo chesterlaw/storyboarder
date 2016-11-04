@@ -1,0 +1,17 @@
+.movie-screen {
+  background: black;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+.movie-screen__img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  margin-left: -50px;
+  margin-top: -50px;
+}

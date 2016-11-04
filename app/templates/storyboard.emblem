@@ -4,7 +4,7 @@
   .title-bar__tools
     .title-bar__ink.title-bar__ink--black click='enterDrawMode'
     .title-bar__ink.title-bar__ink--white click='enterEraseMode'
-    .title-bar__play Play
+    .title-bar__play click='play' Play
 
 .column-labels
   .column-labels__label.column-labels__label--cut Cut
@@ -15,3 +15,6 @@ each model.cuts as |cut index|
   = cut-row cut=cut index=index drawColor=model.drawColor
 
 = add-cut-button
+
+.movie-screen
+  img.movie-screen__img

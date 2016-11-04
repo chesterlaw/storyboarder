@@ -18,6 +18,10 @@ export default Ember.Route.extend({
 
     enterDrawMode() {
       this.controller.set('model.drawColor', 'black')
+    },
+
+    play() {
+      $('.movie-screen').show();
     }
   }
 });
