@@ -12,3 +12,5 @@
   .column-labels__label.column-labels__label--duration Duration (s)
 
 = cut-row
+
+button.add-cut-button Add Cut +
