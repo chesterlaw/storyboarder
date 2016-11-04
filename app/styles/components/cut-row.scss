@@ -23,4 +23,6 @@
 
 .cut-row__canvas {
   border: 1px solid black;
+  cursor: crosshair;
+  // cursor: url('path-to-image.png'), auto;
 }
