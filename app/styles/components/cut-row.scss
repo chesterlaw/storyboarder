@@ -23,7 +23,7 @@
 }
 
 .cut-row__canvas {
-  background: #eee;
+  background: darken(white, 5%);
   cursor: crosshair;
   width: 100%;
   // cursor: url('path-to-image.png'), auto;
