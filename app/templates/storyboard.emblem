@@ -11,6 +11,7 @@
   .column-labels__label.column-labels__label--visual Visual
   .column-labels__label.column-labels__label--duration Duration (s)
 
-= cut-row
+each model as |cut|
+  = cut-row
 
 = add-cut-button
