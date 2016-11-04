@@ -46,16 +46,16 @@ export default Ember.Component.extend({
     canvasContext.lineWidth = 2;
 
     canvas.addEventListener('mousemove', function (e) {
-        findxy('move', e)
+      findxy('move', e)
     }, false);
     canvas.addEventListener('mousedown', function (e) {
-        findxy('down', e)
+      findxy('down', e)
     }, false);
     canvas.addEventListener('mouseup', function (e) {
-        findxy('up', e)
+      findxy('up', e)
     }, false);
     canvas.addEventListener('mouseout', function (e) {
-        findxy('out', e)
+      findxy('out', e)
     }, false);
 
     function enterEraseMode() {
@@ -101,7 +101,7 @@ export default Ember.Component.extend({
         }
       }
       if (res == 'up' || res == 'out') {
-          flag = false;
+        flag = false;
       }
       if (res == 'move') {
         if (flag) {
