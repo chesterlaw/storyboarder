@@ -1,6 +1,7 @@
 .cut-row__section.cut-row__section--cut
   p {{cutNumber}}
 .cut-row__section.cut-row__section--visual
-  canvas.cut-row__canvas width=400 height=300
+  canvas.cut-row__canvas width=240 height=180
 .cut-row__section.cut-row__section--duration
-  input
+  button click='clearCanvas' Clear
+  input value=cut.duration keyUp='foo'

@@ -6,20 +6,35 @@ export default Ember.Component.extend({
   cutNumber: Ember.computed('index', function() {
     return this.get('index') + 1;
   }),
-  didInsertElement() {
-    var flag = false,
-        prevX = 0,
-        currX = 0,
-        prevY = 0,
-        currY = 0,
-        dot_flag = false,
-        drawColor = 'black',
-        canvas = this.element.querySelector('canvas'),
-        ctx = canvas.getContext('2d'),
-        w = canvas.width,
-        h = canvas.height;
 
-    ctx.lineWidth = 2;
+  actions: {
+    foo() {
+      console.log('foo')
+    },
+
+    clearCanvas() {
+      if (confirm('Really want to clear?')) {
+        this.get('canvasContext').clearRect(0, 0, this.get('w'), this.get('h'));
+        // document.getElementById('canvasimg').style.display = 'none';
+      }
+    }
+  },
+
+  didInsertElement() {
+    var flag = false;
+    var prevX = 0;
+    var currX = 0;
+    var prevY = 0;
+    var currY = 0;
+    var dot_flag = false;
+    var drawColor = 'black';
+    var canvas = this.element.querySelector('canvas');
+    var canvasContext = canvas.getContext('2d')
+    this.set('canvasContext', canvasContext);
+    this.set('w', canvas.width);
+    this.set('h', canvas.height);
+
+    canvasContext.lineWidth = 2;
 
     canvas.addEventListener('mousemove', function (e) {
         findxy('move', e)
@@ -43,19 +58,12 @@ export default Ember.Component.extend({
     }
 
     function draw() {
-      ctx.beginPath();
-      ctx.moveTo(prevX, prevY);
-      ctx.lineTo(currX, currY);
-      ctx.strokeStyle = drawColor;
-      ctx.stroke();
-      ctx.closePath();
-    }
-
-    function clearCanvas() {
-      if (confirm('Really want to clear?')) {
-        ctx.clearRect(0, 0, w, h);
-        document.getElementById('canvasimg').style.display = 'none';
-      }
+      canvasContext.beginPath();
+      canvasContext.moveTo(prevX, prevY);
+      canvasContext.lineTo(currX, currY);
+      canvasContext.strokeStyle = drawColor;
+      canvasContext.stroke();
+      canvasContext.closePath();
     }
 
     function save() {
@@ -76,10 +84,10 @@ export default Ember.Component.extend({
         flag = true;
         dot_flag = true;
         if (dot_flag) {
-          ctx.beginPath();
-          ctx.fillStyle = drawColor;
-          ctx.fillRect(currX, currY, 2, 2);
-          ctx.closePath();
+          canvasContext.beginPath();
+          canvasContext.fillStyle = drawColor;
+          canvasContext.fillRect(currX, currY, 2, 2);
+          canvasContext.closePath();
           dot_flag = false;
         }
       }
