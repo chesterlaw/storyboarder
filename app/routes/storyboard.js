@@ -22,6 +22,13 @@ export default Ember.Route.extend({
 
     play() {
       $('.movie-screen').show();
+
+      // hide .movie-screen if esc is pressed
+      $(document).keyup(function(e) {
+        if (e.keyCode === 27) {
+          $('.movie-screen').hide();
+        }
+      });
     }
   }
 });
