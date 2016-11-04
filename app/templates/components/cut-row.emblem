@@ -4,5 +4,5 @@
   canvas.cut-row__canvas width=240 height=180
 .cut-row__section.cut-row__section--duration
   button click='clearCanvas' Clear
-  input.cutDuration value=cut.duration keyUp="updateCutDuration"
+  input.cut-duration value=cut.duration keyUp="updateCutDuration"
   .update-visual {{updateVisual}}

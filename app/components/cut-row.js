@@ -113,7 +113,7 @@ export default Ember.Component.extend({
 
   actions: {
     updateCutDuration() {
-      var cutDuration = this.element.querySelector('input.cutDuration').value;
+      var cutDuration = this.element.querySelector('input.cut-duration').value;
       this.set('cut.duration', cutDuration);
     },
 
