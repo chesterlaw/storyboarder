@@ -6,7 +6,6 @@ export default Ember.Component.extend({
   currX: 0,
   prevY: 0,
   currY: 0,
-  aspectRatio: 1.33333333,
   flag: false,
   dot_flag: false,
   canvasHeight: 800,

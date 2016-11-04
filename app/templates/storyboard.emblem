@@ -14,7 +14,7 @@
 
 .cut-rows
   each model.cuts as |cut index|
-    = cut-row cut=cut index=index drawColor=model.drawColor playTimestamp=model.playTimestamp
+    = cut-row cut=cut index=index drawColor=model.drawColor playTimestamp=model.playTimestamp aspectRatio=model.aspectRatio
 
 = add-cut-button
 

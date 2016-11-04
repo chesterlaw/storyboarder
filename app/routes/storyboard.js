@@ -8,7 +8,8 @@ export default Ember.Route.extend({
     return {
       cuts: this.get('store').peekAll('cut'),
       drawColor: 'black',
-      playTimestamp: Date.now()
+      playTimestamp: Date.now(),
+      aspectRatio: 1.3333333333333
     };
   },
 
