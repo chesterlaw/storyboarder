@@ -3,6 +3,6 @@
 .cut-row__section.cut-row__section--visual
   canvas.cut-row__canvas width=240 height=180
 .cut-row__section.cut-row__section--duration
-  button click='clearCanvas' Clear
   input.cut-duration value=cut.duration keyUp="updateCutDuration"
+  button click='clearCanvas' Clear
   .update-visual {{updateVisual}}

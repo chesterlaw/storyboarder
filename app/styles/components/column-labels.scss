@@ -1,6 +1,7 @@
-$cut-column-width: 10%;
+$cut-column-width: 50px;
 $visual-column-width: 400px;
-$duration-column-width: calc(90% - 400px);
+$fixed-widths: $cut-column-width + $visual-column-width;
+$duration-column-width: calc(100% - #{$fixed-widths});
 
 .column-labels {
   border-bottom: 1px solid black;
