@@ -29,9 +29,9 @@ export default Ember.Component.extend({
     this.get('canvas').addEventListener('mouseup', function (e) {
       this.findxy('up', e)
     }.bind(this), false);
-    // this.get('canvas').addEventListener('mouseout', function (e) {
-    //   this.findxy('out', e)
-    // }.bind(this), false);
+    this.get('canvas').addEventListener('mouseout', function (e) {
+      this.findxy('out', e)
+    }.bind(this), false);
 
     this.set('canvasContext', this.get('canvas').getContext('2d'));
     this.get('canvasContext').lineWidth = 2;
