@@ -1,6 +1,6 @@
 .cut-row__section.cut-row__section--cut
   p 1
 .cut-row__section.cut-row__section--visual
-  canvas.cut-row__canvas
+  canvas.cut-row__canvas width=400 height=300
 .cut-row__section.cut-row__section--duration
   input
