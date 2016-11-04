@@ -42,6 +42,26 @@ export default Ember.Component.extend({
     return this.get('index') + 1;
   }),
 
+  init() {
+    this._super(...arguments);
+    this.get('resizeService').on('didResize', event => {
+      this.recalculateCanvasSize();
+    }.bind(this));
+  },
+
+  recalculateCanvasSize() {
+    var offsetHeight = this.get('canvas').offsetHeight;
+    var offsetWidth = offsetHeight*this.get('aspectRatio');
+    console.log(1)
+
+    screen.height;
+    screen.width;
+    // this.get('canvas').height = offsetHeight;
+    // this.get('canvas').width = offsetWidth;
+
+    this.set('w', this.get('canvas').width);
+    this.set('h', this.get('canvas').height);
+  },
 
   enterEraseMode() {
     this.set('drawColor', 'white');
