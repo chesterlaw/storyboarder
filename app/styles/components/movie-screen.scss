@@ -1,5 +1,5 @@
 .movie-screen {
-  background: black;
+  background: red;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -8,11 +8,12 @@
 }
 
 .movie-screen__img {
-  position: fixed;
+  $size: 300px;
+  // position: fixed;
   top: 50%;
   left: 50%;
-  width: 100px;
-  height: 100px;
-  margin-left: -50px;
-  margin-top: -50px;
+  width: $size;
+  height: $size;
+  margin-left: -$size/2;
+  // margin-top: -$size/2;
 }

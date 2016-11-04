@@ -41,6 +41,13 @@ export default Ember.Component.extend({
     return this.get('index') + 1;
   }),
 
+  updateVisual: Ember.computed('playTimestamp', function() {
+    Ember.run.later(function() {
+      this.set('cut.visual', this.get('canvas').toDataURL());
+    }.bind(this));
+    return 1;
+  }),
+
   init() {
     this._super(...arguments);
     this.get('resizeService').on('didResize', event => {
@@ -114,10 +121,6 @@ export default Ember.Component.extend({
       if (confirm('Really want to clear?')) {
         this.get('canvasContext').clearRect(0, 0, this.get('w'), this.get('h'));
       }
-    },
-
-    saveImageToRecord() {
-      this.set('cut.visual', this.get('canvas').toDataURL());
     }
   }
 });

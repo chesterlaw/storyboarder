@@ -7,7 +7,8 @@ export default Ember.Route.extend({
     this.get('store').createRecord('cut');
     return {
       cuts: this.get('store').peekAll('cut'),
-      drawColor: 'black'
+      drawColor: 'black',
+      playTimestamp: Date.now()
     };
   },
 
@@ -21,7 +22,21 @@ export default Ember.Route.extend({
     },
 
     play() {
+      this.controller.set('model.playTimestamp', Date.now());
       $('.movie-screen').show();
+
+      var durations = [];
+      this.get('store').peekAll('cut').forEach(function(item) {
+        durations.push(item.get('duration')*1000);
+      });
+
+      // setTimeout(function() {
+      //   $('.movie-screen .movie-screen__img:last-child').hide();
+      // }, durations[0]*1000)
+
+      // setTimeout(function() {
+      //   $('.movie-screen .movie-screen__img:nth-last-child(1)').hide();
+      // }, durations[0]+durations[1])
 
       // hide .movie-screen if esc is pressed
       $(document).keyup(function(e) {
