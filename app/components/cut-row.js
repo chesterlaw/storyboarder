@@ -13,19 +13,13 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this.set('canvas', this.element.querySelector('canvas'));
-
     var offsetHeight = this.get('canvas').offsetHeight;
     var offsetWidth = offsetHeight*this.get('aspectRatio');
     this.get('canvas').height = offsetHeight;
     this.get('canvas').width = offsetWidth;
 
-    var canvasContext = this.get('canvas').getContext('2d')
-    this.set('canvasContext', canvasContext);
-
     this.set('w', this.get('canvas').width);
     this.set('h', this.get('canvas').height);
-
-    canvasContext.lineWidth = 2;
 
     this.get('canvas').addEventListener('mousemove', function (e) {
       this.findxy('move', e)
@@ -39,20 +33,15 @@ export default Ember.Component.extend({
     this.get('canvas').addEventListener('mouseout', function (e) {
       this.findxy('out', e)
     }.bind(this), false);
+
+    this.set('canvasContext', this.get('canvas').getContext('2d'));
+    this.get('canvasContext').lineWidth = 2;
   },
 
   cutNumber: Ember.computed('index', function() {
     return this.get('index') + 1;
   }),
 
-  draw() {
-    this.get('canvasContext').beginPath();
-    this.get('canvasContext').moveTo(this.get('prevX'), this.get('prevY'));
-    this.get('canvasContext').lineTo(this.get('currX'), this.get('currY'));
-    this.get('canvasContext').strokeStyle = this.get('drawColor');
-    this.get('canvasContext').stroke();
-    this.get('canvasContext').closePath();
-  },
 
   enterEraseMode() {
     this.set('drawColor', 'white');
@@ -93,6 +82,15 @@ export default Ember.Component.extend({
         this.draw();
       }
     }
+  },
+
+  draw() {
+    this.get('canvasContext').beginPath();
+    this.get('canvasContext').moveTo(this.get('prevX'), this.get('prevY'));
+    this.get('canvasContext').lineTo(this.get('currX'), this.get('currY'));
+    this.get('canvasContext').strokeStyle = this.get('drawColor');
+    this.get('canvasContext').stroke();
+    this.get('canvasContext').closePath();
   },
 
   actions: {
