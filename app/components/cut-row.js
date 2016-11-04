@@ -11,6 +11,36 @@ export default Ember.Component.extend({
   dot_flag: false,
   drawColor: 'black',
 
+  didInsertElement() {
+    this.set('canvas', this.element.querySelector('canvas'));
+
+    var offsetHeight = this.get('canvas').offsetHeight;
+    var offsetWidth = offsetHeight*this.get('aspectRatio');
+    this.get('canvas').height = offsetHeight;
+    this.get('canvas').width = offsetWidth;
+
+    var canvasContext = this.get('canvas').getContext('2d')
+    this.set('canvasContext', canvasContext);
+
+    this.set('w', this.get('canvas').width);
+    this.set('h', this.get('canvas').height);
+
+    canvasContext.lineWidth = 2;
+
+    this.get('canvas').addEventListener('mousemove', function (e) {
+      this.findxy('move', e)
+    }.bind(this), false);
+    this.get('canvas').addEventListener('mousedown', function (e) {
+      this.findxy('down', e)
+    }.bind(this), false);
+    this.get('canvas').addEventListener('mouseup', function (e) {
+      this.findxy('up', e)
+    }.bind(this), false);
+    this.get('canvas').addEventListener('mouseout', function (e) {
+      this.findxy('out', e)
+    }.bind(this), false);
+  },
+
   cutNumber: Ember.computed('index', function() {
     return this.get('index') + 1;
   }),
@@ -24,6 +54,47 @@ export default Ember.Component.extend({
     this.get('canvasContext').closePath();
   },
 
+  enterEraseMode() {
+    this.set('drawColor', 'white');
+  },
+
+  enterDrawMode(obj) {
+    this.set('drawColor', 'black');
+  },
+
+  findxy(res, e) {
+    var boundingBox = this.get('canvas').getBoundingClientRect();
+
+    if (res == 'down') {
+      this.set('prevX', this.get('currX'));
+      this.set('prevY', this.get('currY'));
+      this.set('currX', e.clientX - boundingBox.left);
+      this.set('currY', e.clientY - boundingBox.top);
+
+      this.set('flag', true);
+      this.set('dot_flag', true);
+      if (this.get('dot_flag')) {
+        this.get('canvasContext').beginPath();
+        this.get('canvasContext').fillStyle = this.get('drawColor');
+        this.get('canvasContext').fillRect(this.get('currX'), this.get('currY'), 2, 2);
+        this.get('canvasContext').closePath();
+        this.set('dot_flag', false);
+      }
+    }
+    if (res == 'up' || res == 'out') {
+      this.set('flag', false);
+    }
+    if (res == 'move') {
+      if (this.get('flag')) {
+        this.set('prevX', this.get('currX'));
+        this.set('prevY', this.get('currY'));
+        this.set('currX', e.clientX - boundingBox.left);
+        this.set('currY', e.clientY - boundingBox.top);
+        this.draw();
+      }
+    }
+  },
+
   actions: {
     updateCutDuration() {
       var cutDuration = this.element.querySelector('input.cutDuration').value;
@@ -33,79 +104,6 @@ export default Ember.Component.extend({
     clearCanvas() {
       if (confirm('Really want to clear?')) {
         this.get('canvasContext').clearRect(0, 0, this.get('w'), this.get('h'));
-      }
-    }
-  },
-
-  didInsertElement() {
-    var self = this;
-    var canvas = this.element.querySelector('canvas');
-    this.set('canvas', canvas);
-
-    var offsetHeight = canvas.offsetHeight;
-    var offsetWidth = offsetHeight*this.get('aspectRatio');
-    canvas.height = offsetHeight;
-    canvas.width = offsetWidth;
-
-    var canvasContext = canvas.getContext('2d')
-    this.set('canvasContext', canvasContext);
-
-    this.set('w', canvas.width);
-    this.set('h', canvas.height);
-
-    canvasContext.lineWidth = 2;
-
-    this.get('canvas').addEventListener('mousemove', function (e) {
-      findxy('move', e)
-    }, false);
-    this.get('canvas').addEventListener('mousedown', function (e) {
-      findxy('down', e)
-    }, false);
-    this.get('canvas').addEventListener('mouseup', function (e) {
-      findxy('up', e)
-    }, false);
-    this.get('canvas').addEventListener('mouseout', function (e) {
-      findxy('out', e)
-    }, false);
-
-    function enterEraseMode() {
-      self.set('drawColor', 'white');
-    }
-
-    function enterDrawMode(obj) {
-      self.set('drawColor', 'black');
-    }
-
-    function findxy(res, e) {
-      var boundingBox = canvas.getBoundingClientRect();
-
-      if (res == 'down') {
-        self.set('prevX', self.get('currX'));
-        self.set('prevY', self.get('currY'));
-        self.set('currX', e.clientX - boundingBox.left);
-        self.set('currY', e.clientY - boundingBox.top);
-
-        self.set('flag', true);
-        self.set('dot_flag', true);
-        if (self.get('dot_flag')) {
-          canvasContext.beginPath();
-          canvasContext.fillStyle = self.get('drawColor');
-          canvasContext.fillRect(self.get('currX'), self.get('currY'), 2, 2);
-          canvasContext.closePath();
-          self.set('dot_flag', false);
-        }
-      }
-      if (res == 'up' || res == 'out') {
-        self.set('flag', false);
-      }
-      if (res == 'move') {
-        if (self.get('flag')) {
-          self.set('prevX', self.get('currX'));
-          self.set('prevY', self.get('currY'));
-          self.set('currX', e.clientX - boundingBox.left);
-          self.set('currY', e.clientY - boundingBox.top);
-          self.draw();
-        }
       }
     }
   }
