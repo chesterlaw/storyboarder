@@ -6,7 +6,6 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
 
   click() {
-    this.get('store').createRecord('cut', {
-    });
+    this.get('store').createRecord('cut', {});
   }
 });
