@@ -8,8 +8,9 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    foo() {
-      console.log('foo')
+    updateCutDuration() {
+      var cutDuration = this.element.querySelector('input.cutDuration').value;
+      this.set('cut.duration', cutDuration);
     },
 
     clearCanvas() {
