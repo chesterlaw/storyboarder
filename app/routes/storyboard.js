@@ -24,19 +24,24 @@ export default Ember.Route.extend({
     play() {
       this.controller.set('model.playTimestamp', Date.now());
       $('.movie-screen').show();
+      $('.movie-screen__img').show();
 
       var durations = [];
       this.get('store').peekAll('cut').forEach(function(item) {
         durations.push(item.get('duration')*1000);
       });
 
-      // setTimeout(function() {
-      //   $('.movie-screen .movie-screen__img:last-child').hide();
-      // }, durations[0]*1000)
+      setTimeout(function() {
+        $('.movie-screen .movie-screen__img:visible:nth-child(1)').hide();
+      }, durations[0])
 
-      // setTimeout(function() {
-      //   $('.movie-screen .movie-screen__img:nth-last-child(1)').hide();
-      // }, durations[0]+durations[1])
+      setTimeout(function() {
+        $('.movie-screen .movie-screen__img:visible:nth-child(2)').hide();
+      }, durations[0]+durations[1])
+
+      setTimeout(function() {
+        $('.movie-screen .movie-screen__img:visible:nth-child(3)').hide();
+      }, durations[0]+durations[1]+durations[2])
 
       // hide .movie-screen if esc is pressed
       $(document).keyup(function(e) {
