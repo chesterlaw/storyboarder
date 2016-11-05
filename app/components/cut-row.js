@@ -38,6 +38,8 @@ export default Ember.Component.extend({
     }.bind(this), false);
 
     this.set('canvasContext', this.get('canvas').getContext('2d'));
+
+    this.get('canvasContext').globalAlpha = 0.4;
     this.get('canvasContext').lineWidth = 2;
   },
 
