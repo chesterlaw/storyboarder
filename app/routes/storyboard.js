@@ -23,6 +23,7 @@ export default Ember.Route.extend({
     },
 
     play() {
+      // TODO: move this into movie-screen component.
       this.controller.set('model.playTimestamp', Date.now());
       $('.movie-screen').show();
       $('.movie-screen__img').show();
@@ -49,13 +50,6 @@ export default Ember.Route.extend({
       for (var i=0; i < durations.length; i += 1) {
         doTimeout(i)
       }
-
-      // hide .movie-screen if esc is pressed
-      $(document).keyup(function(e) {
-        if (e.keyCode === 27) {
-          $('.movie-screen').hide();
-        }
-      });
     }
   }
 });

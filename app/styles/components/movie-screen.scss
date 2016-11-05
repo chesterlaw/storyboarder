@@ -8,15 +8,10 @@
 }
 
 .movie-screen__img {
-  $size: 300px;
   position: fixed;
   top: 50%;
   left: 50%;
-  width: $size;
-  height: $size;
   border: 1px solid black;
-  margin-left: -$size/2;
-  margin-top: -$size/2;
   background: white;
-  z-index: -100;
+  z-index: -1;
 }

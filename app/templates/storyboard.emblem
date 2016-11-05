@@ -18,6 +18,4 @@
 
 = add-cut-button
 
-.movie-screen
-  each model.cuts as |cut|
-    img.movie-screen__img src=cut.visual
+= movie-screen cuts=model.cuts aspectRatio=model.aspectRatio playTimestamp=model.playTimestamp

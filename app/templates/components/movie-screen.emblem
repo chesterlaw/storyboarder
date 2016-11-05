@@ -1,0 +1,4 @@
+each cuts as |cut|
+  img.movie-screen__img src=cut.visual
+
+.update-visual {{play}} {{playTimestamp}}
