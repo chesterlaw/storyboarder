@@ -28,6 +28,15 @@ export default Ember.Route.extend({
       $('.movie-screen').show();
       $('.movie-screen__img').show();
 
+      var frameHeight = 300;
+      var frameWidth = frameHeight*this.controller.get('model.aspectRatio');
+
+      $('.movie-screen__img')
+                       .css('width', frameWidth)
+                       .css('height', frameHeight)
+                       .css('margin-left', -frameWidth/2)
+                       .css('margin-top', -frameHeight/2);
+
       $('.movie-screen__img').css('z-index', '-1');
       $('.movie-screen .movie-screen__img:visible:nth-child(1)').css('z-index', '1');
 
